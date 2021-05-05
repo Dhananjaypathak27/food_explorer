@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "52075668335",
+    "project_id": "food-explorer-7f3fe",
+    "storage_bucket": "food-explorer-7f3fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52075668335:android:5531bde2e5f7f02556fe9a",
+        "android_client_info": {
+          "package_name": "com.inxparticle.food_explorer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52075668335-rs7imoon4a1bkqadd2018h4i15063845.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_tiezPztallh93eaTErCL313DkJMBDpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52075668335-rs7imoon4a1bkqadd2018h4i15063845.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
