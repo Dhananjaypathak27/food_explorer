@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_explorer/screens/dashboard_screen.dart';
+import 'package:food_explorer/screens/recipes_screen.dart';
 
 void main() =>
   runApp(MyApp());
@@ -19,6 +20,7 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         '/': (context) => DashboardScreen(),
+        '/recipes_screen': (context) => RecipesScreen(),
       },
     );
   }

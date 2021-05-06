@@ -79,7 +79,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               shrinkWrap: true,
               crossAxisCount: 3,
               children: List.generate(10, (index) {
-                return CategoryCard(name: 'batman 1',imageUrl: 'https://i.ytimg.com/vi/NLOp_6uPccQ/maxresdefault.jpg');
+                return CategoryCard(name: 'batman',imageUrl: 'https://i.ytimg.com/vi/NLOp_6uPccQ/maxresdefault.jpg',categoryId: '1121212');
               }),
             )
           ],
@@ -93,43 +93,53 @@ class CategoryCard extends StatelessWidget {
 
   final String name;
   final String imageUrl;
-  CategoryCard({this.name, this.imageUrl});
+  final String categoryId;
+  CategoryCard({this.name, this.imageUrl,this.categoryId});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(5),
-      width: MediaQuery.of(context).size.width / 3.2,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Colors.grey)),
-      child: Stack(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                alignment: Alignment.center,
+    return GestureDetector(
+      onTap: (){
+        Navigator.pushNamed(context, '/recipes_screen',arguments: {
+          'name': name,
+          'imageUrl': imageUrl,
+          'categoryId': categoryId
+        });
+      },
+      child: Container(
+        margin: EdgeInsets.all(5),
+        width: MediaQuery.of(context).size.width / 3.2,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.grey)),
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  alignment: Alignment.center,
 
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100.0),
-                  child: Image.network(
-                    imageUrl,
-                    fit: BoxFit.fill,
-                    width: MediaQuery.of(context).size.width /4.2,
-                    height: MediaQuery.of(context).size.width / 4.2,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(100.0),
+                    child: Image.network(
+                      imageUrl,
+                      fit: BoxFit.fill,
+                      width: MediaQuery.of(context).size.width /4.2,
+                      height: MediaQuery.of(context).size.width / 4.2,
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 2,),
-              Text(name,style: GoogleFonts.roboto(fontSize: 15),)
-            ],
-          ),
-          Align(
-              alignment: Alignment.topRight,
-              child: Icon(Icons.bookmark_border,size: 25,color: Colors.grey,)
-          )
-        ],
+                SizedBox(height: 2,),
+                Text(name,style: GoogleFonts.roboto(fontSize: 15),)
+              ],
+            ),
+            Align(
+                alignment: Alignment.topRight,
+                child: Icon(Icons.bookmark_border,size: 25,color: Colors.grey,)
+            )
+          ],
+        ),
       ),
     );
   }
