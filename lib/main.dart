@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_explorer/screens/dashboard_screen.dart';
+import 'package:food_explorer/screens/login_screen.dart';
+import 'package:food_explorer/screens/profile_screen.dart';
 import 'package:food_explorer/screens/recipe_detail_screen.dart';
 import 'package:food_explorer/screens/recipes_screen.dart';
 
@@ -23,6 +25,8 @@ class _MyAppState extends State<MyApp> {
         '/': (context) => DashboardScreen(),
         '/recipes_screen': (context) => RecipesScreen(),
         '/recipe_detail_screen': (context) => RecipeDetailScreen(),
+        '/profile_screen': (context) => ProfileScreen(),
+        '/login_screen': (context) => LoginScreen(),
       },
     );
   }

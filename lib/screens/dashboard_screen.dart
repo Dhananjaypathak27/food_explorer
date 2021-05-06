@@ -32,10 +32,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
         actions: [
           Container(
               padding: EdgeInsets.all(5),
-              child: Icon(
-                Icons.view_headline,
-                color: Colors.black,
-                size: 30,
+              child: GestureDetector(
+                onTap: (){
+                  onTap: Navigator.pushNamed(context, '/profile_screen');
+                },
+                child: Icon(
+                  Icons.view_headline,
+                  color: Colors.black,
+                  size: 30,
+                ),
               )),
         ],
         elevation: 0,
