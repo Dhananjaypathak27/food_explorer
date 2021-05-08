@@ -76,7 +76,8 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   imageUrl: snapshot.data
                                       .docs[index]['strMealThumb'],
                                   recipeId: snapshot.data.docs[index].id,categoryId: data['categoryId'],category: snapshot.data
-                                      .docs[index]['category']);
+                                      .docs[index]['category'],time:snapshot.data
+                                      .docs[index]['time']);
                             }),
                           );
                         },
@@ -90,8 +91,8 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
 class RecipesCard extends StatelessWidget {
 
-  final String name,imageUrl,recipeId,categoryId,category;
-  RecipesCard({this.name, this.imageUrl, this.recipeId,this.categoryId,this.category});
+  final String name,imageUrl,recipeId,categoryId,category,time;
+  RecipesCard({this.name, this.imageUrl, this.recipeId,this.categoryId,this.category,this.time});
   @override
   Widget build(BuildContext context) {
     print(recipeId);
@@ -101,10 +102,10 @@ class RecipesCard extends StatelessWidget {
       child: GestureDetector(
         onTap: (){
           Navigator.pushNamed(context, '/recipe_detail_screen',arguments: {
-            // 'recipeId': recipeId,
-            // 'name': name,
-            // 'imageUrl': imageUrl,
-            // 'time': time,
+            'recipeId': recipeId,
+            'name': name,
+             'imageUrl': imageUrl,
+            'time': time,
           });
         },
         child: Container(
@@ -145,5 +146,6 @@ class RecipesCard extends StatelessWidget {
       ),
     );
   }
+
 }
 

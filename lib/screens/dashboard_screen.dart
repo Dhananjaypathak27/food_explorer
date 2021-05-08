@@ -159,7 +159,7 @@ class CategoryCard extends StatelessWidget {
         Navigator.pushNamed(context, '/recipes_screen',arguments: {
           'name': name,
           'imageUrl': imageUrl,
-          'categoryId': categoryId
+          'categoryId': categoryId,
         });
       },
       child: Container(
