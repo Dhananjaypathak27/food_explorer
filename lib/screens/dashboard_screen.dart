@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,6 +9,20 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+
+  var ref;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Firebase.initializeApp().whenComplete(() {
+      print("completed");
+      ref = FirebaseFirestore.instance.collection('category');
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +50,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: EdgeInsets.all(5),
               child: GestureDetector(
                 onTap: (){
-                  onTap: Navigator.pushNamed(context, '/profile_screen');
+                  Navigator.pushNamed(context, '/profile_screen');
                 },
                 child: Icon(
                   Icons.view_headline,
@@ -79,14 +95,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   style: GoogleFonts.roboto(fontSize: 22),
                 )),
             SizedBox(height: 10,),
-            GridView.count(
-              physics: ScrollPhysics(),
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              children: List.generate(10, (index) {
-                return CategoryCard(name: 'batman',imageUrl: 'https://i.ytimg.com/vi/NLOp_6uPccQ/maxresdefault.jpg',categoryId: '1121212');
-              }),
-            )
+            FutureBuilder(future: Firebase.initializeApp(),
+                builder: (context,snapshot){
+              if(snapshot.hasError){
+                return Text('unable to load data');
+              }
+              // Once complete, show your application
+              if (snapshot.connectionState == ConnectionState.done) {
+                return StreamBuilder(
+                  stream: ref.snapshots(),
+                  builder: (context,AsyncSnapshot<QuerySnapshot> snapshot){
+                    return GridView.count(
+                      physics: ScrollPhysics(),
+                      shrinkWrap: true,
+                      crossAxisCount: 3,
+                      children: List.generate(snapshot.hasData? snapshot.data.docs.length:0, (index) {
+                        return CategoryCard(name: snapshot.data.docs[index]['strCategory'],imageUrl: snapshot.data.docs[index]['strCategoryThumb'],categoryId: snapshot.data.docs[index].id);
+                      }),
+                    );
+                  },
+                );
+              }
+              return Center(child: CircularProgressIndicator());
+            }),
+
+
           ],
         ),
       ),
@@ -103,6 +136,8 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  print(''+ categoryId);
+
     return GestureDetector(
       onTap: (){
         Navigator.pushNamed(context, '/recipes_screen',arguments: {
@@ -149,3 +184,5 @@ class CategoryCard extends StatelessWidget {
     );
   }
 }
+
+

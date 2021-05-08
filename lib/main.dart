@@ -23,6 +23,7 @@ class _MyAppState extends State<MyApp> {
       ),
       routes: {
         '/': (context) => DashboardScreen(),
+        '/dashboard_screen': (context) => DashboardScreen(),
         '/recipes_screen': (context) => RecipesScreen(),
         '/recipe_detail_screen': (context) => RecipeDetailScreen(),
         '/profile_screen': (context) => ProfileScreen(),
