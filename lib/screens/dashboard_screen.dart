@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:food_explorer/util/shared_preference.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -11,13 +12,23 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
 
   var ref;
+  bool isUserLoginIn = false;
+  void init() async{
+    bool bol =await SharedPrefrence.isUserLogIn();
+    bol = bol == null ? false: bol;
+
+    setState(() {
+      isUserLoginIn = bol;
+    });
+  }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     Firebase.initializeApp().whenComplete(() {
-      print("completed");
+
+      init();
       ref = FirebaseFirestore.instance.collection('category');
       setState(() {});
     });

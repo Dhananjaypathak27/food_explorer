@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -87,6 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
       print(_user.photoURL);
       // print(_user.phoneNumber);
 
+
+
       _setUserDetails();
     });
   }
@@ -98,8 +101,30 @@ class _LoginScreenState extends State<LoginScreen> {
     SharedPrefrence.setProfileImage(_user.photoURL);
     // SharedPrefrence.setMobileNumber(_user.phoneNumber);
 
+    bool isExists = await doesEmailAlreadyExist(_user.email);
+    print('is email avialble $isExists');
+
+    if(!isExists){
+      FirebaseFirestore.instance.collection('user').add({
+        'email': _user.email,
+        'name': _user.displayName
+      });
+    }
+
+
+
     Navigator.pushNamedAndRemoveUntil(context, '/dashboard_screen', (route) => false);
 
+  }
+
+  Future<bool> doesEmailAlreadyExist(String email) async {
+    final QuerySnapshot result = await FirebaseFirestore.instance
+        .collection('user')
+        .where('email', isEqualTo: email)
+        .limit(1)
+        .get();
+    final List<DocumentSnapshot> documents = result.docs;
+    return documents.length == 1;
   }
 
   Future _signOut() async{
