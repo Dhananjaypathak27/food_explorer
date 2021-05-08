@@ -4,6 +4,7 @@ import 'package:food_explorer/screens/login_screen.dart';
 import 'package:food_explorer/screens/profile_screen.dart';
 import 'package:food_explorer/screens/recipe_detail_screen.dart';
 import 'package:food_explorer/screens/recipes_screen.dart';
+import 'package:food_explorer/screens/search_screen.dart';
 
 void main() =>
   runApp(MyApp());
@@ -28,6 +29,7 @@ class _MyAppState extends State<MyApp> {
         '/recipe_detail_screen': (context) => RecipeDetailScreen(),
         '/profile_screen': (context) => ProfileScreen(),
         '/login_screen': (context) => LoginScreen(),
+        '/search_screen': (context) => SearchScreen(),
       },
     );
   }

@@ -75,27 +75,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.grey)),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.search_outlined,
-                    color: Colors.grey,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Panner Tikka',
-                    style: GoogleFonts.roboto(fontSize: 18, color: Colors.grey),
-                  ),
-                ],
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, '/search_screen');
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.grey)),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.search_outlined,
+                      color: Colors.grey,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Panner Tikka',
+                      style: GoogleFonts.roboto(fontSize: 18, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
