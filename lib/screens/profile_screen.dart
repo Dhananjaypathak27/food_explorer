@@ -162,6 +162,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 onPressed: () {
                                   _logoutUser();
                                   SharedPrefrence.logoutUser();
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                        content: Text(
+                                          'logout Successfully',
+                                          style: GoogleFonts.roboto(color: Colors.white),
+                                        )));
+
                                   Navigator.of(context).pushNamedAndRemoveUntil(
                                       '/dashboard_screen',
                                           (Route<dynamic> route) => false);

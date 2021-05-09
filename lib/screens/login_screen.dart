@@ -104,12 +104,22 @@ class _LoginScreenState extends State<LoginScreen> {
     bool isExists = await doesEmailAlreadyExist(_user.email);
     print('is email avialble $isExists');
 
+
+
+
+
     if(!isExists){
       FirebaseFirestore.instance.collection('user').add({
         'email': _user.email,
         'name': _user.displayName
       });
     }
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(
+            'Welcome Back! ${_user.displayName}',
+            style: GoogleFonts.roboto(color: Colors.white),
+          )));
 
 
 
