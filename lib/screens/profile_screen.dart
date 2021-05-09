@@ -110,13 +110,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Text(''+ userName,style: GoogleFonts.roboto(fontSize: 22,color: Theme.of(context).primaryColor,fontWeight: FontWeight.bold),),
                 Text(''+ email,style: GoogleFonts.roboto(fontSize: 18,color: Colors.black),),
                 SizedBox(height: 30,),
-                Row(
-                  children: [
-                    Icon(Icons.emoji_food_beverage),
-                    SizedBox(width: 5,),
-                    Text('Add Recipes',style: GoogleFonts.roboto(fontSize: 18,color: Colors.black),),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.pushNamed(context, '/add_recipes_screen');
+                  },
+                  child: Row(
+                    children: [
+                      Icon(Icons.emoji_food_beverage),
+                      SizedBox(width: 5,),
+                      Text('Add Recipes',style: GoogleFonts.roboto(fontSize: 18,color: Colors.black),),
 
-                  ],
+                    ],
+                  ),
                 ),
                 SizedBox(height: 5,),
                 Row(
@@ -134,14 +139,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Text('Favorite Cuisines',style: GoogleFonts.roboto(fontSize: 18,color: Colors.black),),
                   ],
                 ),
-                SizedBox(height: 5,),
-                Row(
-                  children: [
-                    Icon(Icons.note_add_rounded),
-                    SizedBox(width: 5,),
-                    Text('My Notes',style: GoogleFonts.roboto(fontSize: 18,color: Colors.black),),
-                  ],
-                ),
+                // SizedBox(height: 5,),
+                // Row(
+                //   children: [
+                //     Icon(Icons.note_add_rounded),
+                //     SizedBox(width: 5,),
+                //     Text('My Notes',style: GoogleFonts.roboto(fontSize: 18,color: Colors.black),),
+                //   ],
+                // ),
                 SizedBox(height: 5,),
                 GestureDetector(
                     onTap: (){

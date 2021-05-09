@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_explorer/screens/add_recipes_screen.dart';
 import 'package:food_explorer/screens/dashboard_screen.dart';
 import 'package:food_explorer/screens/login_screen.dart';
 import 'package:food_explorer/screens/profile_screen.dart';
@@ -30,6 +31,7 @@ class _MyAppState extends State<MyApp> {
         '/profile_screen': (context) => ProfileScreen(),
         '/login_screen': (context) => LoginScreen(),
         '/search_screen': (context) => SearchScreen(),
+        '/add_recipes_screen': (context) => AddRecipesScreen(),
       },
     );
   }
